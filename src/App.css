@@ -1,5 +1,10 @@
 .App {
+  padding-top: 5%;
   text-align: center;
+}
+
+#container{
+  justify-content: center;
 }
 
 .App-logo {
