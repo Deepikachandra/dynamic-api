@@ -20,7 +20,7 @@ class App extends React.Component {
       data: [],
       searchInput: ''
     };
-     this.dropdownType = ["books","magazines"];
+     this.dropdownType = ["All","books","magazines"];
     this.fetchData = this.fetchData.bind(this);
   }
 
@@ -37,7 +37,7 @@ class App extends React.Component {
 
   async fetchData(e){
     this.setState({searchInput: e})
-    let fetchURL="https://www.googleapis.com/books/v1/volumes?q="+e+"&printType="+this.state.type+"&key=AIzaSyCgWnLD7riCTk4lJ4wPXSWHe8uTnFtfTv8"
+    let fetchURL="https://www.googleapis.com/books/v1/volumes?q="+e+(this.state.type==="All" ? "" : "&printType="+this.state.type)+"&key=AIzaSyCgWnLD7riCTk4lJ4wPXSWHe8uTnFtfTv8"
     const response = await axios.get(fetchURL)
     const items = response.data.items
     const data = this.extractData(items)
